@@ -1,0 +1,133 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-09-29T20:10:29Z",
+  "title": "Design System: Ship It.",
+  "extensions": {
+    "colorMeta": {
+      "signal-orange": {
+        "role": "primary",
+        "displayName": "Signal Orange",
+        "canonical": "#f04b23",
+        "tonalRamp": ["oklch(15% 0.20 35)", "oklch(26% 0.20 35)", "oklch(38% 0.20 35)", "oklch(50% 0.20 35)", "oklch(62% 0.20 35)", "oklch(74% 0.20 35)", "oklch(86% 0.20 35)", "oklch(95% 0.20 35)"]
+      },
+      "warm-paper": {
+        "role": "neutral",
+        "displayName": "Warm Paper",
+        "canonical": "#f1efe8",
+        "tonalRamp": ["oklch(15% 0.015 90)", "oklch(26% 0.015 90)", "oklch(38% 0.015 90)", "oklch(50% 0.015 90)", "oklch(62% 0.015 90)", "oklch(74% 0.015 90)", "oklch(86% 0.015 90)", "oklch(95% 0.015 90)"]
+      },
+      "inspection-ink": {
+        "role": "neutral",
+        "displayName": "Inspection Ink",
+        "canonical": "#161713",
+        "tonalRamp": ["oklch(15% 0.01 105)", "oklch(26% 0.01 105)", "oklch(38% 0.01 105)", "oklch(50% 0.01 105)", "oklch(62% 0.01 105)", "oklch(74% 0.01 105)", "oklch(86% 0.01 105)", "oklch(95% 0.01 105)"]
+      },
+      "muted-notation": {
+        "role": "neutral",
+        "displayName": "Muted Notation",
+        "canonical": "#5d5d55",
+        "tonalRamp": ["oklch(15% 0.02 100)", "oklch(26% 0.02 100)", "oklch(38% 0.02 100)", "oklch(50% 0.02 100)", "oklch(62% 0.02 100)", "oklch(74% 0.02 100)", "oklch(86% 0.02 100)", "oklch(95% 0.02 100)"]
+      }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "Focal two-line Ship It. title only; rendered in the self-hosted italic display face." },
+      "headline": { "displayName": "Editable Headline", "purpose": "The participant's obvious, short-measure copy target." },
+      "body": { "displayName": "Instruction", "purpose": "Muted action guidance beneath the edit target." },
+      "label": { "displayName": "Inspection Label", "purpose": "Uppercase header, footer, chapter, and status notation." },
+      "registration": { "displayName": "Registration", "purpose": "Vertical desktop-only scrutineering notation." },
+      "code": { "displayName": "Code Target", "purpose": "Literal filenames and code references in workshop instructions." }
+    },
+    "shadows": [
+      { "name": "signal-halo", "value": "0 0 0 .3rem rgba(240, 75, 35, .15)", "purpose": "A restrained halo around the header's orange inspection mark; never surface elevation." }
+    ],
+    "motion": [
+      { "name": "ring-settle", "value": "1050ms ease-out both; scale(.92) rotate(-5deg) to scale(1) rotate(0) through two damped overshoots", "purpose": "One visible-default entrance for the single oversized signal ring." },
+      { "name": "status-pulse", "value": "1.8s ease-in-out infinite; opacity reaches .35 at 50%", "purpose": "Restrained readiness pulse on the footer status dot." },
+      { "name": "reduced-motion", "value": ".01ms duration, 1 iteration", "purpose": "Collapses all animation when reduced motion is requested." }
+    ],
+    "breakpoints": [
+      { "name": "mobile-stack", "value": "760px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Inspection Mark",
+      "kind": "custom",
+      "refersTo": "inspection-mark",
+      "description": "Uppercase workshop mark with a live orange inspection dot.",
+      "html": "<div class=\"ds-inspection-mark\">Ship It.</div>",
+      "css": ".ds-inspection-mark { display: flex; align-items: center; gap: .65rem; color: var(--ink, #161713); font-family: \"Avenir Next\", \"Helvetica Neue\", Arial, sans-serif; font-size: .72rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; } .ds-inspection-mark::before { content: \"\"; width: .72rem; height: .72rem; flex: 0 0 auto; border-radius: 50%; background: var(--signal, #f04b23); box-shadow: 0 0 0 .3rem rgba(240, 75, 35, .15); }"
+    },
+    {
+      "name": "Registration Label",
+      "kind": "custom",
+      "refersTo": "registration-label",
+      "description": "Desktop-only vertical scrutineering notation bracketed by ink ticks.",
+      "html": "<div class=\"ds-registration-label\">INSPECTED · READY</div>",
+      "css": ".ds-registration-label { display: grid; gap: .55rem; color: var(--muted, #5d5d55); font-family: \"Avenir Next\", \"Helvetica Neue\", Arial, sans-serif; font-size: .55rem; font-weight: 800; letter-spacing: .14em; writing-mode: vertical-rl; } .ds-registration-label::before, .ds-registration-label::after { content: \"\"; width: 1.4rem; height: 1px; background: var(--ink, #161713); } @media (max-width: 760px) { .ds-registration-label { display: none; } }"
+    },
+    {
+      "name": "Editorial Edit Target",
+      "kind": "custom",
+      "refersTo": "editable-target",
+      "description": "The unmistakable participant-owned sentence beneath an inspection rule.",
+      "html": "<section class=\"ds-editorial-panel\"><h2 class=\"ds-editable-target\">Edit this text to <em>make it yours.</em></h2></section>",
+      "css": ".ds-editorial-panel { padding-top: 1.2rem; border-top: 2px solid var(--ink, #161713); background: var(--paper, #f1efe8); } .ds-editable-target { max-width: 13ch; margin: 0; color: var(--ink, #161713); font-family: \"Avenir Next\", \"Helvetica Neue\", Arial, sans-serif; font-size: clamp(2rem, 4vw, 4.5rem); font-weight: 800; letter-spacing: -.035em; line-height: .95; } .ds-editable-target em { color: var(--signal, #f04b23); font-style: normal; } @media (max-width: 760px) { .ds-editable-target { font-size: clamp(2.25rem, 10vw, 3.6rem); } }"
+    },
+    {
+      "name": "Workshop Hint",
+      "kind": "custom",
+      "refersTo": "workshop-hint",
+      "description": "Muted instruction with the exact edit file emphasized in monospace.",
+      "html": "<p class=\"ds-workshop-hint\">Open <code>app.js</code>, find this sentence, and give your build a voice.</p>",
+      "css": ".ds-workshop-hint { margin: 1.5rem 0 0; max-width: 42ch; color: var(--muted, #5d5d55); font-family: \"Avenir Next\", \"Helvetica Neue\", Arial, sans-serif; font-size: .86rem; line-height: 1.6; } .ds-workshop-hint code { color: var(--ink, #161713); font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-weight: 700; }"
+    },
+    {
+      "name": "Ready Status",
+      "kind": "custom",
+      "refersTo": "ready-status",
+      "description": "Terse readiness label with a restrained pulsing signal dot.",
+      "html": "<span class=\"ds-ready-status\">Ready on localhost:3000</span>",
+      "css": ".ds-ready-status { display: flex; align-items: center; gap: .7rem; color: var(--ink, #161713); font-family: \"Avenir Next\", \"Helvetica Neue\", Arial, sans-serif; font-size: .72rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; } .ds-ready-status::before { content: \"\"; width: .5rem; height: .5rem; flex: 0 0 auto; border-radius: 50%; background: var(--signal, #f04b23); animation: ds-status-pulse 1.8s ease-in-out infinite; } @keyframes ds-status-pulse { 50% { opacity: .35; } } @media (prefers-reduced-motion: reduce) { .ds-ready-status::before { animation-duration: .01ms; animation-iteration-count: 1; } }"
+    },
+    {
+      "name": "Signal Ring",
+      "kind": "custom",
+      "refersTo": "signal-ring",
+      "description": "One oversized orange ring with a damped, non-looping entrance.",
+      "html": "<div class=\"ds-signal-ring\" aria-hidden=\"true\"></div>",
+      "css": ".ds-signal-ring { width: min(46vw, 42rem); aspect-ratio: 1; border: clamp(3rem, 9vw, 9rem) solid var(--signal, #f04b23); border-radius: 50%; transform-origin: center; animation: ds-ring-settle 1050ms ease-out both; } @keyframes ds-ring-settle { 0% { transform: scale(.92) rotate(-5deg); } 56% { transform: scale(1.035) rotate(1.2deg); } 78% { transform: scale(.985) rotate(-.4deg); } 100% { transform: scale(1) rotate(0); } } @media (prefers-reduced-motion: reduce) { .ds-signal-ring { animation-duration: .01ms; animation-iteration-count: 1; } }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Scrutineering Start Signal",
+    "overview": "Ship It. looks like a machine has passed inspection and is waiting for release: a warm paper field, near-black inspection ink, terse technical notation, and one decisive orange signal. The interface is spare enough that the editable sentence remains unmistakable, while the oversized italic title and off-canvas ring give the tiny workshop starter a memorable identity.\n\nThe system is flat, exact, and energetic rather than glossy. Large negative fields separate the display title from the edit target; registration ticks and status language supply the scrutineering character without competing with the participant's next action.",
+    "keyCharacteristics": [
+      "Warm paper and inspection ink carry nearly the entire surface.",
+      "Signal orange is rare, semantic, and visually decisive.",
+      "Condensed-feeling italic display lettering contrasts with terse sans-serif labels.",
+      "Desktop composition uses an asymmetric two-column field; mobile becomes a single stack.",
+      "Motion is limited to one damped entrance and one restrained readiness pulse."
+    ],
+    "rules": [
+      { "name": "The One Signal Rule", "body": "Orange identifies the active signal or exact point of attention; it does not become general surface decoration.", "section": "colors" },
+      { "name": "The Paper Field Rule", "body": "Preserve the broad warm-paper field so type, rules, and the signal ring carry the hierarchy without panels or fills.", "section": "colors" },
+      { "name": "The Two Voices Rule", "body": "Use Ship Display only for focal editorial lettering; all operational and instructional language stays in the sans-serif inspection voice.", "section": "typography" },
+      { "name": "The Exact Target Rule", "body": "The participant's editable sentence must remain a large, short-measure headline, with the words that invite ownership picked out in signal orange.", "section": "typography" },
+      { "name": "The Open Field Rule", "body": "Do not fill the negative space with extra cards, badges, or explanatory modules; the emptiness is what makes the edit target obvious.", "section": "layout" },
+      { "name": "The No Surface Shadow Rule", "body": "Keep content on one paper plane; never use shadows to turn text groups into floating panels.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do reserve signal orange for focal words, readiness, focus, selection, and the single ring.",
+      "Do keep the editable sentence and its literal file path immediately visible and unambiguous.",
+      "Do preserve the desktop registration detail and remove it cleanly at the mobile breakpoint.",
+      "Do honor reduced-motion preferences by collapsing animation to a single near-instant iteration."
+    ],
+    "donts": [
+      "Don't add gradients, surface cards, decorative shadows, or rounded content containers to this flat inspection world.",
+      "Don't repeat the large signal ring or scatter orange accents until they lose semantic force.",
+      "Don't use Ship Display for instructions, labels, or body copy.",
+      "Don't carry desktop registration ticks into the mobile content stack."
+    ]
+  }
+}

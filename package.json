@@ -1,0 +1,13 @@
+{
+  "name": "ship-it-workshop",
+  "version": "1.0.0",
+  "private": true,
+  "description": "A tiny Express starting line for the Ship It live workshop.",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "express": "^5.1.0"
+  }
+}
